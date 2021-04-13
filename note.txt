@@ -1,0 +1,33 @@
+使用以下指令來新增新使用者：
+*注意請在geth_data資料夾下運行*
+geth account new --datadir data
+
+password = Aa970236
+Public address of the key:   0xefE58eBE593ab418025ba1Cc2f3C7BDB54388176
+Path of the secret key file: data/keystore/UTC--2021-03-30T05-36-18.741664169Z--efe58ebe593ab418025ba1cc2f3c7bdb54388176
+
+創造genesis.json
+
+設定創世區塊資料：
+geth init --datadir data genesis.json
+
+啟用私有鏈()：
+--netrestrict 為白名單 --nat為連接位址 console為js console
+geth --datadir data --networkid 15 --miner.threads 1 console
+
+
+
+指令：
+eth.accounts 查看帳號
+personal.newAccount(“password”) #創建帳號，填入密碼
+
+0x174664784864648f5028591ef5c3cc93460c8148 #account1
+0xc8cff53e604790b7508bc8bfc7545d41d7148012 #account2
+
+#挖礦
+geth --unlock 0xefE58eBE593ab418025ba1Cc2f3C7BDB54388176 --mine ＃簽名者進入礦區
+geth --mine --miner.threads=1 --etherbase={address} #運行Ethash(挖礦)
+
+#TODO:test
+personal.unlockAccount(eth.accounts[0],"123456") ＃(帳號(address),密碼)
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(5,"ether")});
