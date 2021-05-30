@@ -1,4 +1,5 @@
-pragma solidity ^0.8.1;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.4.11;
 
 contract HelloEthereum {
     //註解範例(範例1)
