@@ -18,13 +18,13 @@ contract SmartSwitch{
 
     ///服務擁有者的權限檢查
     modifier onlyOwner(){
-        require(msg.sender == owner);
+        require(msg.sender == owner,"Only owner can call this function");
         _;
     }
 
     //IoT的權限檢查
     modifier onlyIoT(){
-        require(msg.sender == iot);
+        require(msg.sender == iot,"Only iot can call this function");
         _;
     }
 
@@ -39,7 +39,7 @@ contract SmartSwitch{
     ///付費時會被呼叫的函數
     function payToSwitch() public payable{
         //連1ether都沒有的話，就會停止處理
-        require(msg.value == 1000000000000000000);
+        require(msg.value == 1000000000000000000,"Please pay 1 ether");
         //設定Switch
         Switch storage s = switches[numPaid++];
         s.addr = msg.sender;
@@ -52,9 +52,9 @@ contract SmartSwitch{
     ///引數是switches的key值
     function updateStatus(uint _index) public onlyIoT{
         //如果對應於目標index的Switch尚未設定的話，就停止處理
-        require(switches[_index].addr != 0x0000000000000000000000000000000000000000);
+        require(switches[_index].addr != 0x0000000000000000000000000000000000000000,"This address has not been set");
         //若尚未到達使用結束時間的話，就停止處理
-        require(block.timestamp > switches[_index].endTime);
+        require(block.timestamp > switches[_index].endTime,"time is not up yet");
 
         //更新status
         switches[_index].status = false;
