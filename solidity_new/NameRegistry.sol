@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.5;
-
+/*
+    本程式碼將教材中的合約全面升級至0.8.5版，且修復相關BUG
+    將名稱與地址對應起來
+    名稱可以轉移給其他地址，並寫上敘述
+*/
 contract NameRegistry{
 
     //登錄合約用的結構(struct)
