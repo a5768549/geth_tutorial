@@ -1,5 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.5;
+/*
+    預想IOT設備
+    使用者付款給合約後，可以使用該IOT設備300秒
+    IOT設備可以確認時間是否到達
+    合約方可以收款
+*/
 
 contract SmartSwitch{
     //用於紀錄開關訊息的結構(struct)
